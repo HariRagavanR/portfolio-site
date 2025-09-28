@@ -9,6 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build --no-cache -t hariragavanr/portfolio-site:latest .'
+            }
         }
         stage('Push Docker Image') {
             steps {
