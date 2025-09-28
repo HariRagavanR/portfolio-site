@@ -28,6 +28,7 @@ header {
   display: flex;
   gap: 20px;
   list-style: none;
+  padding-left: 50%;
 }
 
 .nav-links li a {
@@ -39,6 +40,8 @@ header {
 
 /* Hero Section */
 .hero {
+  padding-top: 10%;
+  text-align: center;
   height: 100vh;
   background: url("images/hero-bg.jpg") no-repeat center center/cover;
   position: relative;
@@ -53,9 +56,9 @@ header {
 
 /* About Section */
 #about {
-  background: url("images/about-bg.jpg") no-repeat center center/cover;
+  background: url("images/hero-bg.jpg") no-repeat center center/cover;
   background-attachment: fixed; /* parallax effect */
-  color: #fff;
+  color: #000000;
 }
 
 /* Projects Section */
