@@ -6,14 +6,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/HariRagavanR/portfolio-site.git'
             }
         }
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo "✅ Building Portfolio Site..."
+                script {
+                    docker.build("hariragavanr/portfolio-site:latest")
+                }
             }
         }
-        stage('Deploy') {
+        stage('Push Docker Image') {
             steps {
-                echo "🚀 Deploying Portfolio Site..."
+                withDockerRegistry([ credentialsId: 'dockerhub-creds', url: '' ]) {
+                    script {
+                        docker.image("hariragavanr/portfolio-site:latest").push()
+                    }
+                }
             }
         }
     }
