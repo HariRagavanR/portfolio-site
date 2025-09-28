@@ -18,5 +18,16 @@ pipeline {
                 }
             }
         }
+        stage('Deploy Container') {
+            steps {
+                sh '''
+                  # Remove old container if running
+                  docker rm -f portfolio || true
+                  
+                  # Run latest container on port 80
+                  docker run -d --name portfolio -p 80:80 hariragavanr/portfolio-site:latest
+                '''
+            }
+        }
     }
 }
