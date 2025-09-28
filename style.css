@@ -1,16 +1,14 @@
-/* General */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f9f9f9;
-  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d0d0d;
+  color: #eaeaea;
   scroll-behavior: smooth;
 }
 
 /* Navbar */
 header {
-  background: #111;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.85);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -23,138 +21,133 @@ header {
   padding: 15px 25px;
 }
 
-.navbar .logo {
-  font-size: 24px;
-}
-
-.navbar .logo span {
-  color: #007bff;
-}
+.logo { font-size: 28px; font-weight: bold; }
+.logo span { color: #00d4ff; }
 
 .nav-links {
-  list-style: none;
   display: flex;
   gap: 20px;
+  list-style: none;
 }
 
 .nav-links li a {
-  color: #fff;
+  color: #eaeaea;
   text-decoration: none;
   transition: color 0.3s;
 }
+.nav-links li a:hover { color: #00d4ff; }
 
-.nav-links li a:hover {
-  color: #007bff;
-}
-
-#menuBtn {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 24px;
-}
-
-/* Hero */
+/* Hero Section */
 .hero {
-  height: 90vh;
-  background: linear-gradient(135deg, #00ff22, #00d4ff);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  height: 100vh;
+  background: url("images/hero-bg.jpg") no-repeat center center/cover;
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); /* dark overlay */
 }
 
+/* About Section */
+#about {
+  background: url("images/about-bg.jpg") no-repeat center center/cover;
+  background-attachment: fixed; /* parallax effect */
+  color: #fff;
+}
+
+/* Projects Section */
+#projects {
+  background: url("images/projects-bg.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+/* Contact Section */
+#contact {
+  background: url("images/contact-bg.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.hero .overlay {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.hero-text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+.hero-text h2 { font-size: 48px; font-weight: 700; }
+.hero-text span { color: #00d4ff; }
 .hero .btn {
-  display: inline-block;
-  background: #fff;
-  color: #007bff;
+  margin-top: 20px;
   padding: 12px 25px;
   border-radius: 8px;
+  background: #00d4ff;
+  color: #0d0d0d;
   text-decoration: none;
-  margin-top: 20px;
   font-weight: bold;
 }
 
 /* Sections */
-.section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
+.section { padding: 60px 20px; max-width: 1000px; margin: auto; }
+h2 { color: #00d4ff; margin-bottom: 20px; }
 
-h2 {
-  color: #007bff;
-  margin-bottom: 20px;
-}
-
+/* Glassmorphism cards */
 .card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
   padding: 20px;
   margin: 15px 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
+/* Projects Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
   gap: 20px;
 }
+.grid .card:hover { transform: translateY(-5px); transition: 0.3s; }
 
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
+/* Skills */
+.skills { display: flex; flex-wrap: wrap; gap: 15px; padding: 0; }
 .skills li {
-  background: #007bff;
-  color: #fff;
+  background: #00d4ff;
+  color: #0d0d0d;
   padding: 10px 15px;
   border-radius: 8px;
   list-style: none;
+  font-weight: bold;
 }
 
 /* Animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease-in-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
   background: #111;
-  color: #fff;
+  color: #aaa;
+}
+.card h3 {
+  color: #00d4ff;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: #111;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    padding: 15px;
-    border-radius: 8px;
-  }
+.card a {
+  color: #00ffee;
+  font-weight: bold;
+  text-decoration: none;
+}
 
-  .nav-links.show {
-    display: flex;
-  }
-
-  #menuBtn {
-    display: block;
-  }
+.card a:hover {
+  text-decoration: underline;
 }
