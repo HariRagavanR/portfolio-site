@@ -8,17 +8,13 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("hariragavanr/portfolio-site:latest")
-                }
+                sh 'docker build -t hariragavanr/portfolio-site:latest .'
             }
         }
         stage('Push Docker Image') {
             steps {
                 withDockerRegistry([ credentialsId: 'dockerhub-creds', url: '' ]) {
-                    script {
-                        docker.image("hariragavanr/portfolio-site:latest").push()
-                    }
+                    sh 'docker push hariragavanr/portfolio-site:latest'
                 }
             }
         }
